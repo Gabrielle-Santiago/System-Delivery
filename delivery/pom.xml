@@ -92,6 +92,13 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+        <!-- 🔹 Mercado Pago -->
+        <dependency>
+            <groupId>com.mercadopago</groupId>
+            <artifactId>sdk-java</artifactId>
+            <version>2.1.29</version>
+        </dependency>
+
         <!-- 🔹 Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -33,14 +33,14 @@ public class CardPaymentService {
                             .installments(cardPaymentDTO.getInstallments())
                             .paymentMethodId(cardPaymentDTO.getPaymentMethodId())
                             .payer(
-                                    PaymentPayerRequest.builder()
-                                            .email(cardPaymentDTO.getPayer().getEmail())
-                                            .identification(
-                                                    IdentificationRequest.builder()
-                                                            .type(cardPaymentDTO.getPayer().getIdentification().getType())
-                                                            .number(cardPaymentDTO.getPayer().getIdentification().getNumber())
-                                                            .build())
-                                            .build())
+                                PaymentPayerRequest.builder()
+                                .email(cardPaymentDTO.getPayer().getEmail())
+                                .identification(
+                                    IdentificationRequest.builder()
+                                        .type(cardPaymentDTO.getPayer().getIdentification().getType())
+                                        .number(cardPaymentDTO.getPayer().getIdentification().getNumber())
+                                        .build())
+                                .build())
                             .build();
 
             Payment createdPayment = paymentClient.create(paymentCreateRequest);

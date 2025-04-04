@@ -5,9 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "product")
+@Getter
+@Setter
 public class ProductEntity {
 
     @Id
@@ -25,33 +29,4 @@ public class ProductEntity {
         this.valueProduct = valueProduct;
         this.describe = describe;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getValueProduct() {
-        return valueProduct;
-    }
-
-    public void setValueProduct(Double valueProduct) {
-        this.valueProduct = valueProduct;
-    }
-
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe = describe;
-    }
-
-    public Long getId() {
-        return id;
-    }
-    
 }

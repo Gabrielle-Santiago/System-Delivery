@@ -66,8 +66,9 @@ Exemplo de configuração:
 spring.datasource.url=jdbc:postgresql://localhost:5432/delivery
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
-
+```
 Há também o arquivo exampleapplication.properties com um exemplo pronto para uso.
+
 
 ## CRUD - (Admin / Proprietário)
 O proprietário tem acesso total ao gerenciamento dos produtos:
@@ -91,6 +92,7 @@ public class CorsConfiguration implements WebMvcConfigurer {
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
 }
+```
 
 ## Testes
 As rotas da API foram testadas usando o Insomnia.
@@ -109,6 +111,7 @@ public class ErrorResponse {
         return message;
     }
 }
+```
 
 Exemplo de uso em controller:
 
@@ -119,3 +122,4 @@ public ResponseEntity<?> ValidateCard(@RequestBody CardDTO card){
     }
     return ResponseEntity.ok(card);
 }
+```

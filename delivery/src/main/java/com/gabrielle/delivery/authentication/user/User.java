@@ -13,10 +13,10 @@ import lombok.*;
 @Table(name = "users")
 @Entity(name = "users")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-
 public class User implements UserDetails {
     
     @Id

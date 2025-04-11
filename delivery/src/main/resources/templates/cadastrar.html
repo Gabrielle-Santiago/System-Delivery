@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar</h1>
+        <form id="formRegister">
+            <div>
+                <label class="form-label">Nome</label>
+                <input type="text" class="required" placeholder="Nome Completo" aria-label="Username"
+                    aria-describedby="inputGroupPrepend3" id="validationUsername" name="login" oninput="nameValidate()" required>
+                <span class="span-required"></span>
+            </div>
+        
+            <div>
+                <label class="form-label">Endereço do Email</label>
+                <input type="email" class="required" id="exampleFormControlInput1" placeholder="nome@exemplo.com"
+                    name="email" oninput="emailValidate()" required>
+                <span class="span-required"></span>
+            </div>
+        
+            <div>
+                <label class="form-label">Senha</label>
+                <input type="password" class="required" placeholder="Digite sua senha"
+                    aria-label="Password" name="password" oninput="passwordValidate()" required>
+                <span class="span-required"></span>
+            </div>
+        
+            <div>
+                <label class="form-label">Tipo de usuário (ADMIN(Vendedor), USER(Cliente))</label>
+                <input type="text" class="required" placeholder="Ex: ADMIN ou USER"
+                    aria-label="Role" name="role" oninput="roleValidate()" required>
+                <span class="span-required"></span>
+            </div>
+        
+            <button type="submit">Enviar</button>
+        </form>
+            
+    </div>
+    
+    <script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Entrar</h1>
+    <form id="formLogin">
+      <div>
+        <label class="form-label">Nome de Usuário</label>
+        <input type="text" class="required" placeholder="Digite seu nome" name="login" oninput="loginValidate()" required>
+        <span class="span-required"></span>
+      </div>
+
+      <div>
+        <label class="form-label">Senha</label>
+        <input type="password" class="required" placeholder="Digite sua senha" name="password" oninput="passwordValidate()" required>
+        <span class="span-required"></span>
+      </div>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

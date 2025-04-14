@@ -11,18 +11,18 @@
     <h1>Entrar</h1>
     <form id="formLogin">
       <div>
-        <label class="form-label">Nome de Usuário</label>
-        <input type="text" class="required" placeholder="Digite seu nome" name="login" oninput="loginValidate()" required>
+        <label class="form-label">Username</label>
+        <input type="text" id="login" class="required" placeholder="Digite seu username" required>
         <span class="span-required"></span>
       </div>
 
       <div>
         <label class="form-label">Senha</label>
-        <input type="password" class="required" placeholder="Digite sua senha" name="password" oninput="passwordValidate()" required>
+        <input type="password" id="password" class="required" placeholder="Digite sua senha" required>
         <span class="span-required"></span>
       </div>
 
-      <button type="submit">Entrar</button>
+      <button type="submit" id="loginButton">Entrar</button>
     </form>
   </div>
 

@@ -4,11 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <h1>HOME ADMIN PORRAA</h1>
+    <!-- From Uiverse.io by adamgiebl --> 
 
-  <script src="/js/login.js"></script>
+    <div class="card" id="formProduct">
+      <h1>Cadastrar Novo Produto</h1>
+
+      <form>
+        <div class="text">
+          <span>Nome do produto</span>
+        </div>
+        <input id="name" name="name" placeholder="Escreva aqui o nome completo" required></input>
+        
+        <div class="text">
+          <span>Acrescente um valor</span>
+        </div>
+        <input id="valueProduct" name="valueProduct" placeholder="Digite o valor do produto" type="number" step="0.01" required></input>
+  
+        <div class="text">
+          <span>Descrição</span>
+        </div>
+        <input id="describe" name="describe" placeholder="Escreva uma pequena descrição" required></input>
+  
+        <div class="text">
+          <span>Selecione uma imagem</span>
+        </div>
+        
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+  <script src="/js/product.js"></script>
 </body>
 </html>

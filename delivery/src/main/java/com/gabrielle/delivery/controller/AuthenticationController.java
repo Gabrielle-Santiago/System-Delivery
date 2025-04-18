@@ -36,13 +36,12 @@ public class AuthenticationController {
     public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data, HttpServletResponse response) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
-
         var token = tokenService.generateToken((User) auth.getPrincipal());
         var user = (User) auth.getPrincipal();
 
         Cookie roleCookie = new Cookie("role", user.getRole().name());
         roleCookie.setPath("/");
-        roleCookie.setHttpOnly(false); 
+        roleCookie.setHttpOnly(false);
         roleCookie.setMaxAge(60 * 60); 
 
         response.addCookie(roleCookie);

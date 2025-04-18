@@ -85,9 +85,9 @@ function checkUserRoleAndRedirect() {
   }
 
   if (role === "ADMIN") {
-    window.location.href = "/homeAdmin.html";
+    window.location.href = "/pag/homeAdmin";
   } else if (role === "USER") {
-    window.location.href = "/user/home.html";
+    window.location.href = "/pag/homeUser";
   } else {
     alert("Tipo de usuário desconhecido.");
   }

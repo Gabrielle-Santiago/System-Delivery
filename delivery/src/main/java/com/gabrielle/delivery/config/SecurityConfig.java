@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.gabrielle.delivery.cookies.config.CookieAuthenticationFilter;
+
 import jakarta.servlet.Filter;
 
 @Configuration
@@ -24,6 +26,7 @@ public class SecurityConfig {
          return httpSecurity
                  .csrf(csrf -> csrf.disable())
                  .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                 .addFilterBefore(new CookieAuthenticationFilter(),  UsernamePasswordAuthenticationFilter.class)
                      .authorizeHttpRequests(authorize -> authorize
                      .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                      .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
@@ -35,12 +38,12 @@ public class SecurityConfig {
                      .requestMatchers(HttpMethod.POST, "/payment/number-card").hasRole("USER")
                      .requestMatchers(HttpMethod.POST, "/payment/card-flag").hasRole("USER")
                      .requestMatchers(HttpMethod.POST, "/api.upload").hasRole("ADMIN")
-                     .requestMatchers( HttpMethod.GET, "/homeAdmin").hasRole("ADMIN")
+                     .requestMatchers( HttpMethod.GET, "/pag/homeAdmin").hasRole("ADMIN")
+                     .requestMatchers( HttpMethod.GET, "/pag/homeUser").hasRole("USER")
                      .requestMatchers( HttpMethod.GET,"/", "/cadastrar", "/login").permitAll()                 
                      .requestMatchers( "/css/**", "/js/**", "/images/**").permitAll()
                      .anyRequest().authenticated()
                  )
-                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                  .build();
         
     }

@@ -21,8 +21,13 @@ public class HomeController {
         return "login"; 
     }
 
-    @GetMapping("/homeAdmin")
+    @GetMapping("/pag/homeAdmin")
     public String homeAdmin() {
         return "homeAdmin"; 
+    }
+
+    @GetMapping("/pag/homeUser")
+    public String homeUser() {
+        return "homeUser"; 
     }
 }

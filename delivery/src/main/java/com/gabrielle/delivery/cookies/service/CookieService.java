@@ -1,11 +1,14 @@
 package com.gabrielle.delivery.cookies.service;
 
+import org.springframework.stereotype.Service;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
+@Service
 public class CookieService {
 
-    public static String getCookies(HttpServletRequest request, String key) {
+    public String getCookies(HttpServletRequest request, String key) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -17,4 +20,3 @@ public class CookieService {
         return null;
     }
 }
-

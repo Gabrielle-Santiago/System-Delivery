@@ -12,7 +12,7 @@
     <div class="card" id="formProduct">
       <h1>Cadastrar Novo Produto</h1>
 
-      <form>
+      <form enctype="multipart/form-data">
         <div class="text">
           <span>Nome do produto</span>
         </div>
@@ -31,6 +31,7 @@
         <div class="text">
           <span>Selecione uma imagem</span>
         </div>
+        <input id="file" name="file" type="file" multiple></input>
         
         <button type="submit">Cadastrar</button>
       </form>

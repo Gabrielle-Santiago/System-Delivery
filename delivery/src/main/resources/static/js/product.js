@@ -52,4 +52,23 @@ document.querySelector("form").addEventListener("submit", async function (e) {
       }
     }    
 });
-  
+
+file.addEventListener("change", function () {
+  const previewArea = document.getElementById("preview-area");
+  const fileInput = file.files[0];
+
+  if (fileInput && fileInput.type.startsWith("image/")) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewArea.innerHTML = `<img src="${e.target.result}" alt="Preview" class="preview-img" />`;
+    };
+
+    reader.readAsDataURL(fileInput);
+  } else {
+    previewArea.innerHTML = `
+      <svg ...></svg>
+      <p>Browse File to upload!</p>
+    `;
+  }
+});

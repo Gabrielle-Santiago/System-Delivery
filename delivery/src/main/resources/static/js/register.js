@@ -41,6 +41,7 @@ document.getElementById("formRegister").addEventListener("submit", async functio
 
   function setError(index, message) {
     camposInput[index].style.border = "2px solid #e63636";
+    spans[index].style.color = " #e63636";
     spans[index].style.display = "block";
     spans[index].textContent = message;
   }

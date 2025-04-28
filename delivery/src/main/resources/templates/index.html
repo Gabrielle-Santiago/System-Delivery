@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-    <h1>Index</h1>
+    <div class="content">
+        <div class="card">
+            <h1>System Delivery</h1>
+            <p>
+                Venha se tornar nosso cliente ou fornecedor. Nossa plataforma é feita para ser simples e eficiente, conectando você com o mundo dos sabores.
+            </p>
+            <p>
+                Trabalhamos com uma variedade de alimentos e parceiros. Junte-se a nós para fazer parte dessa jornada deliciosa!
+            </p>
+            <div class="buttons">
+                <a th:href="@{/cadastrar}" class="btn">Cadastrar</a>
+                <a th:href="@{/login}" class="btn">Logar</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

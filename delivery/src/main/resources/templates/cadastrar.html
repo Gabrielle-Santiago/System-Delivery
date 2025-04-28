@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
 </head>
 <body>
     <div class="container">
-        <h1>Cadastrar</h1>
-        <form id="formRegister">
-            <div>
-                <label class="form-label">Nome</label>
-                <input type="text" class="required" placeholder="Nome Completo" aria-label="Username" aria-describedby="inputGroupPrepend3" id="validationUsername" name="login" oninput="nameValidate()" required>
-                <span class="span-required"></span>
+        <form id="formRegister" class="form">
+            <p class="title">Cadastrar</p>
+            <p class="message">Cadastre-se agora e tenha acesso completo ao app.</p>
+
+            <div class="flex">
+                <label>
+                    <input type="text" class="input required" placeholder="" name="login" oninput="nameValidate()" required>
+                    <span class="span-required">Nome Completo</span>
+                </label>
             </div>
-        
-            <div>
-                <label class="form-label">Endereço do Email</label>
-                <input type="email" class="required" id="exampleFormControlInput1" placeholder="nome@exemplo.com"
-                    name="email" oninput="emailValidate()" required>
-                <span class="span-required"></span>
+
+            <div class="flex">
+                <label>
+                    <input type="email" class="input required" placeholder="" name="email" oninput="emailValidate()" required>
+                    <span class="span-required">Email</span>
+                </label>
             </div>
-        
-            <div>
-                <label class="form-label">Senha</label>
-                <input type="password" class="required" placeholder="Digite sua senha"
-                    aria-label="Password" name="password" oninput="passwordValidate()" required>
-                <span class="span-required"></span>
+
+            <div class="flex">
+                <label>
+                    <input type="password" class="input required" placeholder="" name="password" oninput="passwordValidate()" required>
+                    <span class="span-required">Senha</span>
+                </label>
             </div>
-        
-            <div>
-                <label class="form-label">Tipo de usuário (ADMIN(Vendedor), USER(Cliente))</label>
-                <input type="text" class="required" placeholder="Ex: ADMIN ou USER"
-                    aria-label="Role" name="role" oninput="roleValidate()" required>
-                <span class="span-required"></span>
+
+            <div class="flex">
+                <label>
+                    <input type="text" class="input required" placeholder="" name="role" oninput="roleValidate()" required>
+                    <span class="span-required">Usuário (Admin ou User)</span>
+                </label>
             </div>
-        
-            <button type="submit">Enviar</button>
+
+            <button type="submit" class="submit">Enviar</button>
+            <p class="signin">Já possui conta? <a th:href="@{/login}">Logar</a></p>
+            <p class="signin"><a th:href="@{/}">Voltar</a></p>
         </form>
-            
     </div>
-    
-    <script src="/js/index.js"></script>
+
+    <script src="/js/register.js"></script>
 </body>
 </html>

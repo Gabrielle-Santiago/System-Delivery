@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
   <div class="container">
-    <h1>Entrar</h1>
-    <form id="formLogin">
-      <div>
+    <form id="formLogin" class="form">
+      <p class="title">Entrar</p>
+
+      <div class="flex">
         <label class="form-label">Username</label>
-        <input type="text" id="login" class="required" placeholder="Digite seu username" required>
+        <input type="text" id="login" class="input required" placeholder="Digite seu username" required>
         <span class="span-required"></span>
       </div>
 
-      <div>
+      <div class="flex">
         <label class="form-label">Senha</label>
-        <input type="password" id="password" class="required" placeholder="Digite sua senha" required>
+        <input type="password" id="password" class="input required" placeholder="Digite sua senha" required>
         <span class="span-required"></span>
       </div>
 
-      <button type="submit" id="loginButton">Entrar</button>
+      <button type="submit" id="loginButton" class="submit">Entrar</button>
+
+      <p class="signin">Não tem uma conta? <a th:href="@{/cadastrar}">Cadastre-se</a></p>
     </form>
   </div>
 

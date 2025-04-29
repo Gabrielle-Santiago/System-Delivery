@@ -42,6 +42,7 @@ public class SecurityConfig {
                      .requestMatchers( HttpMethod.GET, "/pag/homeUser").hasRole("USER")
                      .requestMatchers( HttpMethod.GET,"/", "/cadastrar", "/login").permitAll()                 
                      .requestMatchers( "/css/**", "/js/**", "/images/**").permitAll()
+                     .requestMatchers(HttpMethod.GET, "/api.upload/view/{fileName:.+}").permitAll()
                      .anyRequest().authenticated()
                  )
                  .build();

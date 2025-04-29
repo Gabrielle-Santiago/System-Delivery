@@ -1,29 +1,58 @@
 package com.gabrielle.delivery.controller;
 
-import com.gabrielle.delivery.service.ImageUploadService;
-import com.gabrielle.delivery.errorResponse.ErrorResponse;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gabrielle.delivery.errorResponse.ErrorResponse;
+import com.gabrielle.delivery.service.ImageUploadService;
+
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @RestController
 @RequestMapping("/api/upload")
-@CrossOrigin(origins = "*")
 public class ImageUploadController {
 
-    private final ImageUploadService imageUploadService;
+    private final ImageUploadService service;
 
-    public ImageUploadController(ImageUploadService imageUploadService) {
-        this.imageUploadService = imageUploadService;
+    public ImageUploadController(ImageUploadService service) {
+        this.service = service;
     }
 
     @PostMapping
     public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
-            String filePath = imageUploadService.uploadImage(file);
-            return ResponseEntity.ok().body("Image saved in: " + filePath);
+            String fileName = service.uploadImage(file);
+            return ResponseEntity.ok().body("Image saved at: /api/upload/view/" + fileName);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ErrorResponse("Error uploading: " + e.getMessage()));
+        }
+    }
+
+    
+    @GetMapping("/view/{fileName:.+}")
+    public ResponseEntity<Resource> viewImage(@PathVariable String fileName) {
+        try {
+            Path imagePath = Paths.get(service.getUploadDir()).resolve(fileName).normalize();
+            Resource resource = new UrlResource(imagePath.toUri());
+
+            if (resource.exists()) {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.IMAGE_JPEG) 
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+
+        } catch (MalformedURLException e) {
+            return ResponseEntity.badRequest().build();
         }
     }
 }

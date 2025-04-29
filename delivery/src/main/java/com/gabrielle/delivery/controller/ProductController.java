@@ -35,7 +35,5 @@ public class ProductController {
     public ProductEntity patchProduct(
         @PathVariable Long id,
         @RequestBody ProductDTO dto
-        ){
-        return service.updateProduct(id, dto);
-    }
+        ){ return service.updateProduct(id, dto); }
 }

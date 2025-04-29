@@ -31,6 +31,10 @@ public class ImageUploadService {
             fos.write(file.getBytes());
         }
 
-        return filePath;
+        return file.getOriginalFilename();
+    }
+
+    public String getUploadDir() {
+        return uploadDir;
     }
 }

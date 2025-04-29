@@ -34,6 +34,7 @@ public class SecurityConfig {
                      .requestMatchers(HttpMethod.POST, "/payment/number-card").hasRole("USER")
                      .requestMatchers(HttpMethod.POST, "/payment/card-flag").hasRole("USER")
                      .requestMatchers(HttpMethod.POST, "/api.upload").hasRole("ADMIN")
+                     .requestMatchers(HttpMethod.GET, "/api.upload/view/{fileName:.+}").permitAll()
                      .anyRequest().authenticated()
                  )
                  .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

@@ -32,7 +32,7 @@ document.getElementById("formRegister").addEventListener("submit", async functio
       alert("Cadastro realizado com sucesso!");
       window.location.href = "/login";
     } else {
-      alert("Erro ao cadastrar.");
+      alert("Usuário já existente!!");
     }
 
   } catch (error) {
@@ -70,8 +70,8 @@ document.getElementById("formRegister").addEventListener("submit", async functio
   }
 
   function passwordValidate() {
-    if (camposInput[2].value.trim().length < 6) {
-      setError(2, "A senha deve ter no mínimo 6 caracteres");
+    if (camposInput[2].value.trim().length < 8) {
+      setError(2, "A senha deve ter no mínimo 8 caracteres");
     } else {
       clearError(2);
     }

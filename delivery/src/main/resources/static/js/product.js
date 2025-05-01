@@ -82,11 +82,34 @@ async function mostrarProduto() {
           <p>${produto.describe}</p>
           <img src="/api/upload/view/${produto.imgName}" 
                alt="${produto.name}" style="width: 200px; height: 200px; object-fit: cover;" />
+          
+          <div class="card3">
+            <ul class="list">
+              <li class="element rename" data-id="${produto.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" stroke="#7e8590" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
+                  <path d="m15 5 4 4"></path>
+                </svg>
+                <button class="label" onclick="updateProduct()">Rename</button>
+              </li>
+              <li class="element delete" data-id="${produto.id}">
+                <svg class="lucide lucide-trash-2" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#7e8590" fill="none" viewBox="0 0 24 24" height="24" width="24">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  <line y2="17" y1="11" x2="10" x1="10"></line>
+                  <line y2="17" y1="11" x2="14" x1="14"></line>
+                </svg>
+                <button class="label delete-btn" onclick="deleteProduct()">Delete</button>
+              </li>
+            </ul>
+          </div>
           <hr>
         </div>
       `;
       resultadoDiv.innerHTML += productHTML;
     });
+    
 
   } catch (error) {
     console.error("Erro ao carregar produtos:", error);

@@ -12,8 +12,11 @@ import com.gabrielle.delivery.errorResponse.ErrorResponse;
 import com.gabrielle.delivery.service.ImageUploadService;
 
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/upload")
@@ -29,7 +32,11 @@ public class ImageUploadController {
     public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
             String fileName = service.uploadImage(file);
-            return ResponseEntity.ok().body("Image saved at: /api/upload/view/" + fileName);
+            Path path = Paths.get("delivery/src/main/resources/static/images/uploads", fileName);
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
+            return ResponseEntity.ok(Map.of("fileName", fileName));
+            
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ErrorResponse("Error uploading: " + e.getMessage()));
         }

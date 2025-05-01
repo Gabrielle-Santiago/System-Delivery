@@ -1,57 +1,49 @@
 document.querySelector("form").addEventListener("submit", async function (e) {
-    e.preventDefault();
-  
+  e.preventDefault();
+
+  let imgName = "";
+
+  async function uploadFiles() {
+    const img = document.getElementById("file").files[0];
+    const formData = new FormData();
+    formData.append("file", img);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+    return result.fileName;
+  }
+
+  try {
+    imgName = await uploadFiles();
+
     const productData = {
       name: this.name.value,
       valueProduct: parseFloat(valueProduct.value),
-      describe: describe.value
+      describe: describe.value,
+      imgName: imgName 
     };
-    
-    try {
-      const response = await fetch("/admin/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productData)
-      });
 
-      uploadFiles();
-      if (response.ok) {
-        alert("Produto cadastrado com sucesso!!");
-      } else {
-        alert("Ocorreu um erro, tente novamente.");
-      }
-    } catch (error) {
-      console.error("Erro:", error);
+    const response = await fetch("/admin/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(productData)
+    });
+
+    if (response.ok) {
+      alert("Produto cadastrado com sucesso!!");
+    } else {
+      alert("Ocorreu um erro ao cadastrar o produto.");
     }
 
-    async function uploadFiles() {
-      const file = document.getElementById("file");
-      const img = file.files[0];
-    
-      if (!img) {
-        alert("Selecione uma imagem antes de enviar.");
-        return;
-      }
-    
-      const formData = new FormData();
-      formData.append("file", img);
-    
-      try {
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          body: formData
-        });
-    
-        if (response.ok) {
-          alert("Imagem enviada com sucesso!");
-        } else {
-          alert("Erro ao enviar imagem, tente novamente.");
-        }
-      } catch (error) {
-        console.error("Error Image:", error);
-      }
-    }    
+  } catch (error) {
+    console.error("Erro:", error);
+  }
 });
+
 
 file.addEventListener("change", function () {
   const previewArea = document.getElementById("preview-area");
@@ -72,3 +64,31 @@ file.addEventListener("change", function () {
     `;
   }
 });
+
+async function mostrarProduto() {
+  try {
+    const response = await fetch("/admin/home");
+    if (!response.ok) throw new Error("Erro ao buscar produtos");
+
+    const produtos = await response.json();
+    const resultadoDiv = document.getElementById("resultado");
+
+    resultadoDiv.innerHTML = "";
+    produtos.forEach(produto => {
+      const productHTML = `
+        <div class="produto-item">
+          <h3>${produto.name}</h3>
+          <p>Valor: R$ ${produto.valueProduct.toFixed(2)}</p>
+          <p>${produto.describe}</p>
+          <img src="/api/upload/view/${produto.imgName}" 
+               alt="${produto.name}" style="width: 200px; height: 200px; object-fit: cover;" />
+          <hr>
+        </div>
+      `;
+      resultadoDiv.innerHTML += productHTML;
+    });
+
+  } catch (error) {
+    console.error("Erro ao carregar produtos:", error);
+  }
+}

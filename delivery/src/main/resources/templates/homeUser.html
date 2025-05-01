@@ -7,8 +7,23 @@
   <link rel="stylesheet" th:href="@{/css/homeUser.css}">
 </head>
 <body>
-    <div id="resultado">Carregando dados...</div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+    </div>
 
+  <div class="card">
+    <div class="card-title">Nome do produto</div>
+    <div class="card-content">
+      <img alt="Imagem do alimento" style="width: 300px; height: 300px;">
+      <div>Descrição</div>
+      <div>Valor do produto</div>
+    </div>
+    <div class="card-button">
+      <button onclick="buyProduct">Comprar</button>
+    </div>
+  </div>
+  
   <script src="/js/showProducts.js"></script>
 </body>
 </html>

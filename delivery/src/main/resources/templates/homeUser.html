@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/css/homeUser.css}">
+</head>
+<body>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close btnCheckout" id="closeModalBtn">&times;</button>
+
+      <!-- From Uiverse.io by mi-series --> 
+      <form id="checkoutForm" method="POST">
+        <div class="container">
+          <div class="cardModal cart">
+            <label class="title">CHECKOUT</label>
+            <div class="steps">
+              <div class="step">
+                <hr>
+                <div>
+                  <span>Método de Pagamento</span>
+                  <p>Bandeira do cartão</p>
+                  <input id="bandeira" class="input_field" placeholder="exemplo: VISA">
+                  <p>Número do cartão</p>
+                  <input id="numero-cartao" class="input_field" type="number" required>
+                </div>   
+                <hr>
+                <div class="payments">
+                  <div class="details">
+                    <span>Total:</span>
+                    <span id="total-compra">R$240.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="cardModal checkout">
+            <div class="footer">
+              <label class="price">R$240.00</label>
+              <button type="submit" class="checkout-btn">Checkout</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      
+    </div>
+  </div>
+
+  <div id="produtosContainer"></div>
+
+  <script src="/js/showProducts.js"></script>
+</body>
+</html>

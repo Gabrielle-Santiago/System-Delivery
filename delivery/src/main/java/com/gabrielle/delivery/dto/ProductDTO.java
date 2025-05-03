@@ -16,10 +16,12 @@ public class ProductDTO {
     private String name;
     private Double valueProduct;
     private String describe;
+    private String imgName;
 
-    public ProductDTO(String describe, String name, Double valueProduct) {
+    public ProductDTO(String describe, String name, Double valueProduct, String imgName) {
         this.describe = describe;
         this.name = name;
         this.valueProduct = valueProduct;
+        this.imgName = imgName;
     }
 }

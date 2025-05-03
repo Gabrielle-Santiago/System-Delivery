@@ -21,12 +21,14 @@ public class ProductEntity {
     private String name;
     private Double valueProduct;
     private String describe;
+    private String imgName;
 
     public ProductEntity(){}
 
-    public ProductEntity(String name, Double valueProduct, String describe){
+    public ProductEntity(String name, Double valueProduct, String describe, String imgName){
         this.name = name;
         this.valueProduct = valueProduct;
         this.describe = describe;
+        this.imgName = imgName;
     }
 }

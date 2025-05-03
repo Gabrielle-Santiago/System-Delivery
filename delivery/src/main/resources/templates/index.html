@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div class="content">
+        <div class="card">
+            <h1>System Delivery</h1>
+            <p>
+                Venha se tornar nosso cliente ou fornecedor. Nossa plataforma é feita para ser simples e eficiente, conectando você com o mundo dos sabores.
+            </p>
+            <p>
+                Trabalhamos com uma variedade de alimentos e parceiros. Junte-se a nós para fazer parte dessa jornada deliciosa!
+            </p>
+            <div class="buttons">
+                <a th:href="@{/cadastrar}" class="btn">Cadastrar</a>
+                <a th:href="@{/login}" class="btn">Logar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- From Uiverse.io by Yaya12085 --> 
+    <div id="cookieDelete" class="cookie-card">
+        <span class="title">🍪 Cookie Notice</span>
+        <p class="description">We use cookies to ensure that we give you the best experience on our website. <a href="#">Read cookies policies</a>. </p>
+        <div class="actions">
+            <button class="pref">
+                Manage your preferences
+            </button>
+            <button id="btnCookie" class="accept">
+                Accept
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("btnCookie").addEventListener("click", function () {
+            const cookieDelete = document.getElementById("cookieDelete");
+            cookieDelete.style.display = "none";
+        });
+    </script>
+</body>
+</html>

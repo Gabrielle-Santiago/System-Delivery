@@ -17,6 +17,8 @@ import com.gabrielle.delivery.dto.RegisterDTO;
 import com.gabrielle.delivery.repository.UserRepository;
 import com.gabrielle.delivery.service.TokenService;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -31,11 +33,18 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data){
+    public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data, HttpServletResponse response) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
-
         var token = tokenService.generateToken((User) auth.getPrincipal());
+        var user = (User) auth.getPrincipal();
+
+        Cookie roleCookie = new Cookie("role", user.getRole().name());
+        roleCookie.setPath("/");
+        roleCookie.setHttpOnly(false);
+        roleCookie.setMaxAge(60 * 60); 
+
+        response.addCookie(roleCookie);
 
         return ResponseEntity.ok(new LoginDTO(token));
     }

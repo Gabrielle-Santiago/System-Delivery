@@ -10,7 +10,7 @@ O **Sistema de Pedidos de Delivery** é uma aplicação web onde o **usuário (c
 - Spring Security + JWT
 - Envio de e-mail
 - API REST
-- React (Frontend via Vite)
+- Thymelaf + Javascript (para o frontend)
 
 ---
 
@@ -47,7 +47,6 @@ Os dados são organizados e armazenados no **PostgreSQL**, com estrutura pensada
   - Atualizar nome, valor e descrição
   - Deletar por ID
   - Upload de imagem (armazenada localmente em `resources/images/uploads`)
-- **Pedidos**: Relaciona os usuários aos produtos comprados.
 - **Pagamentos**:
   - Validação do número do cartão
   - Reconhecimento do tipo de cartão (Visa, Mastercard, Amex, Hipercard)
@@ -56,6 +55,17 @@ Os dados são organizados e armazenados no **PostgreSQL**, com estrutura pensada
   - Envio automático de mensagem padrão ao admin ao receber um pedido
 
 ---
+
+### Armazenamento com Cookies
+No controle de acesso à rota inicial (/home), são definidas rotas distintas para usuários com perfil admin e user. Para isso, utiliza-se o armazenamento de cookies contendo a informação da role do usuário.
+
+Ao receber a role via cookie após a autenticação, o sistema realiza o redirecionamento automático para a rota correspondente, conforme o perfil identificado:
+
+- **admin** → redireciona para */home/admin*
+
+- **user** → redireciona para */home/user*
+
+Esse mecanismo garante uma experiência personalizada de acordo com o nível de acesso do usuário e facilita a gestão de permissões no sistema.
 
 ## Banco de Dados
 
@@ -78,21 +88,6 @@ Funcionalidades:
 - Atualizar nome, descrição e valor
 - Listar todos os produtos
 - Deletar produto por ID
-
-## Integração com o Frontend
-Foi configurado **CORS** para permitir a comunicação entre backend e frontend (React com Vite).
-
-```java
-@Configuration
-public class CorsConfiguration implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-            .allowedOrigins("http://localhost:5173")
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
-    }
-}
-```
 
 ## Testes
 As rotas da API foram testadas usando o Insomnia.

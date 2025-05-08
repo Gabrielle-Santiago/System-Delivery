@@ -118,3 +118,11 @@ public ResponseEntity<?> ValidateCard(@RequestBody CardDTO card){
     return ResponseEntity.ok(card);
 }
 ```
+
+## Vídeo de demostração
+### Rota Admin (Vendedor)
+[![Demonstração da Rota Admin](https://github.com/user-attachments/assets/035808ea-99bc-4561-9b87-3ded2dee7897)](https://github.com/user-attachments/assets/035808ea-99bc-4561-9b87-3ded2dee7897)
+
+### Rota User (Consumidor)
+[![Demonstração da Rota User](https://github.com/user-attachments/assets/87439736-8966-4aa0-9b5b-901919d60a30)](https://github.com/user-attachments/assets/87439736-8966-4aa0-9b5b-901919d60a30)
+
